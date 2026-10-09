@@ -1,0 +1,122 @@
+{
+  "name": "Eclips Map",
+  "scopeName": "source.eclmap",
+  "patterns": [
+    {
+      "include": "#map_grid"
+    },
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#colon_block"
+    },
+    {
+      "include": "#named_block"
+    },
+    {
+      "include": "#ability_block"
+    },
+    {
+      "include": "#key"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#color"
+    },
+    {
+      "include": "#number"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "match": "^[ \\t]*#(?:[ \\t].*)?$",
+      "name": "comment.line.number-sign.eclmap"
+    },
+    "map_grid": {
+      "begin": "^(mapa|map):[ \\t]*$",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.other.bloque.eclmap"
+        }
+      },
+      "while": "^(?=[ \\t]*$|[ \\t]*#(?:[ \\t].*)?$|[ \\t]*[#.= >A-Z~^+<*@!:;|_/\\\\,()\\[\\]{}?$%&'`-]+[ \\t]*$)",
+      "patterns": [
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#row"
+        }
+      ]
+    },
+    "row": {
+      "begin": "^[ \\t]*([#.= >A-Z~^+<*@!:;|_/\\\\,()\\[\\]{}?$%&'`-])",
+      "beginCaptures": {
+        "1": {
+          "name": "meta.fila.eclmap",
+          "patterns": [
+            {
+              "match": "[A-Z]",
+              "name": "variable.other.constant.celda.eclmap"
+            }
+          ]
+        }
+      },
+      "end": "[ \\t]*$",
+      "contentName": "meta.fila.eclmap",
+      "patterns": [
+        {
+          "match": "[A-Z]",
+          "name": "variable.other.constant.celda.eclmap"
+        }
+      ]
+    },
+    "colon_block": {
+      "match": "^[ \\t]*(jugador|player|hud|guardar|save|fin|end|oleadas|waves)(?=:[ \\t]*$)",
+      "captures": {
+        "1": {
+          "name": "keyword.other.bloque.eclmap"
+        }
+      }
+    },
+    "named_block": {
+      "match": "^[ \\t]*(npc|enemigo|enemy|torre|tower|item|objeto|trigger|zona|marcador|marker|proyectil|projectile|ruta|route|tile|casilla)(?=[ \\t]+\\S)",
+      "captures": {
+        "1": {
+          "name": "keyword.other.bloque.eclmap"
+        }
+      }
+    },
+    "ability_block": {
+      "match": "^(habilidad|ability)(?=[ \\t]+\\S)",
+      "captures": {
+        "1": {
+          "name": "keyword.other.bloque.eclmap"
+        }
+      }
+    },
+    "key": {
+      "match": "^[ \\t]*([A-Za-z_][\\w]*)(?=[ \\t]*:)",
+      "captures": {
+        "1": {
+          "name": "entity.other.attribute-name.clave.eclmap"
+        }
+      }
+    },
+    "string": {
+      "match": "\\\"[^\\\"\\n]*\\\"",
+      "name": "string.quoted.double.eclmap"
+    },
+    "color": {
+      "match": "#[0-9A-Fa-f]+(?![A-Za-z0-9_])",
+      "name": "variable.other.constant.color.eclmap"
+    },
+    "number": {
+      "match": "(?<![A-Za-z0-9_])-?\\d+(?:\\.\\d+)?",
+      "name": "constant.numeric.eclmap"
+    }
+  }
+}

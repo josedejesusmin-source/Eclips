@@ -1,0 +1,11 @@
+{
+  "Personaje": {
+    "prefix": "personaje",
+    "description": "Bloque de personaje del proyecto, con su nombre visible",
+    "body": [
+      "personaje ${1:nombre} {",
+      "    nombre \"${2:Nombre}\"",
+      "}"
+    ]
+  }
+}

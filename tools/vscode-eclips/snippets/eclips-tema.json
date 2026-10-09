@@ -1,0 +1,10 @@
+{
+  "Tema": {
+    "prefix": "tema",
+    "description": "Tema mínimo: color de la caja y color del texto",
+    "body": [
+      "caja_color   ${1:#1a1f2e}",
+      "texto_color  ${2:#FFFFFF}"
+    ]
+  }
+}

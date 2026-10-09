@@ -1,0 +1,16 @@
+{
+  "Mapa": {
+    "prefix": "mapa",
+    "description": "Mapa mínimo .eclmap en vista cenital, con el jugador en el centro",
+    "body": [
+      "modo: ${1:topdown}",
+      "",
+      "mapa:",
+      "#######",
+      "#.....#",
+      "#..${2:P}..#",
+      "#.....#",
+      "#######"
+    ]
+  }
+}

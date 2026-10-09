@@ -1,0 +1,130 @@
+{
+  "name": "eclips-engine",
+  "displayName": "Eclips Engine",
+  "publisher": "sicigia",
+  "description": "Colorea guiones EclipScript (.ecl), mapas .eclmap, temas y el proyecto .eclips. Vista previa: no ejecuta el juego ni valida.",
+  "version": "0.1.0",
+  "preview": true,
+  "license": "MIT",
+  "icon": "icono.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/josedejesusmin-source/Eclips.git"
+  },
+  "engines": {
+    "vscode": "^1.139.1"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "files": [
+    "LICENSE",
+    "README.md",
+    "icono.png",
+    "language-configuration-eclipscript.json",
+    "language-configuration-eclmap.json",
+    "language-configuration-eclips-proyecto.json",
+    "language-configuration-eclips-tema.json",
+    "syntaxes/eclipscript.tmLanguage.json",
+    "syntaxes/eclmap.tmLanguage.json",
+    "syntaxes/eclips-proyecto.tmLanguage.json",
+    "syntaxes/eclips-tema.tmLanguage.json",
+    "snippets/eclipscript.json",
+    "snippets/eclmap.json",
+    "snippets/eclips-proyecto.json",
+    "snippets/eclips-tema.json"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "eclipscript",
+        "aliases": [
+          "EclipScript",
+          "eclipscript"
+        ],
+        "extensions": [
+          ".ecl"
+        ],
+        "configuration": "./language-configuration-eclipscript.json"
+      },
+      {
+        "id": "eclmap",
+        "aliases": [
+          "Eclips Map",
+          "eclmap"
+        ],
+        "extensions": [
+          ".eclmap"
+        ],
+        "configuration": "./language-configuration-eclmap.json"
+      },
+      {
+        "id": "eclips-proyecto",
+        "aliases": [
+          "Eclips Proyecto",
+          "eclips-proyecto"
+        ],
+        "filenames": [
+          "project.eclips",
+          "proyecto.eclips"
+        ],
+        "configuration": "./language-configuration-eclips-proyecto.json"
+      },
+      {
+        "id": "eclips-tema",
+        "aliases": [
+          "Eclips Tema",
+          "eclips-tema"
+        ],
+        "filenames": [
+          "tema.eclips",
+          "theme.eclips"
+        ],
+        "filenamePatterns": [
+          "tema_*.eclips"
+        ],
+        "configuration": "./language-configuration-eclips-tema.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "eclipscript",
+        "scopeName": "source.eclipscript",
+        "path": "./syntaxes/eclipscript.tmLanguage.json"
+      },
+      {
+        "language": "eclmap",
+        "scopeName": "source.eclmap",
+        "path": "./syntaxes/eclmap.tmLanguage.json"
+      },
+      {
+        "language": "eclips-proyecto",
+        "scopeName": "source.eclips.proyecto",
+        "path": "./syntaxes/eclips-proyecto.tmLanguage.json"
+      },
+      {
+        "language": "eclips-tema",
+        "scopeName": "source.eclips.tema",
+        "path": "./syntaxes/eclips-tema.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "eclipscript",
+        "path": "./snippets/eclipscript.json"
+      },
+      {
+        "language": "eclmap",
+        "path": "./snippets/eclmap.json"
+      },
+      {
+        "language": "eclips-proyecto",
+        "path": "./snippets/eclips-proyecto.json"
+      },
+      {
+        "language": "eclips-tema",
+        "path": "./snippets/eclips-tema.json"
+      }
+    ]
+  }
+}
