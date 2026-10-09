@@ -82,9 +82,9 @@ Lo principal de lo que ya sabemos y todavía no se arregla.
    contornos repetidos de las letras en vez de un resplandor suave.
    El sistema de texto seguirá recibiendo mejoras.
 
-   En una tableta Surface 3, durante una prueba de fuentes con un diseño de 1920×1080, percibí un corte
+   En mi tableta Surface 3, durante una prueba de fuentes con un diseño de 1920×1080, noté un corte
    leve en la parte superior de algunas letras pequeñas. Seguían siendo legibles. Todavía
-   falta reproducirlo con una captura directa y medir qué lo provoca.
+   falta medir qué lo provoca.
 
 8. **Una vez, el menú se quedó sin opciones al activar la secuencia secreta después de volver
    de la demo.** El poema no llegó a abrirse. Fue un caso aislado, sin una reproducción
