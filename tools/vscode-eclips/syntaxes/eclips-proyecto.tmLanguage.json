@@ -1,0 +1,101 @@
+{
+  "name": "Eclips Proyecto",
+  "scopeName": "source.eclips.proyecto",
+  "patterns": [
+    {
+      "include": "#control_block"
+    },
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#color"
+    },
+    {
+      "include": "#hashkey"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#number"
+    },
+    {
+      "include": "#block"
+    },
+    {
+      "include": "#key"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "match": "#(?![0-9A-Fa-f]).*$",
+      "name": "comment.line.number-sign.eclips"
+    },
+    "color": {
+      "match": "#[0-9A-Fa-f]+(?![A-Za-z0-9_])",
+      "name": "variable.other.constant.color.eclips"
+    },
+    "string": {
+      "match": "\"(?:[^\"#]|#[0-9A-Fa-f])*\"",
+      "name": "string.quoted.double.eclips"
+    },
+    "number": {
+      "match": "(?<![A-Za-z0-9_])-?\\d+(?:\\.\\d+)?%?",
+      "name": "constant.numeric.eclips"
+    },
+    "hashkey": {
+      "match": "#(?![0-9A-Fa-f]+(?![A-Za-z0-9_]))[A-Za-z_][A-Za-z0-9_]*",
+      "name": "entity.other.attribute-name.clave.eclips"
+    },
+    "block": {
+      "match": "^[ \\t]*(personaje|character|estilo|style|imagenes|images|teclas|keys|pantallas|transiciones|transitions|fuente|font)\\b(?=.*\\{[ \\t]*$)",
+      "captures": {
+        "1": {
+          "name": "keyword.other.bloque.eclips"
+        }
+      }
+    },
+    "key": {
+      "match": "(^|[ \\t])([A-Za-z_][\\w]*)",
+      "captures": {
+        "2": {
+          "name": "entity.other.attribute-name.clave.eclips"
+        }
+      }
+    },
+    "six": {
+      "match": "#[^ \\t]{6}(?=$|[ \\t])",
+      "name": "meta.color-invalid.eclips"
+    },
+    "control_block": {
+      "begin": "^[ \\t]*(estilo_control|control_style)\\b[^{]*\\{[ \\t]*$",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.other.bloque.eclips"
+        }
+      },
+      "end": "^\\s*\\}",
+      "patterns": [
+        {
+          "include": "#color"
+        },
+        {
+          "include": "#six"
+        },
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#number"
+        },
+        {
+          "include": "#key"
+        }
+      ]
+    }
+  }
+}

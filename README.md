@@ -74,7 +74,7 @@ Lo principal de lo que ya sabemos y todavía no se arregla.
    desarrollado. Lo que hay ahora en 2D son las bases sobre las que quiero seguir trabajando,
    y probablemente cambiará bastante.
 
-   Su rendimiento también necesita trabajo: en un tramo de la demo, mi Surface rondó los 35 FPS,
+   Su rendimiento también necesita trabajo: en un tramo de la demo, mi tableta Surface 3 rondó los 35 FPS,
    mientras mi PC rondó los 60. Conectarla al cargador no cambió el resultado. Todavía tengo que
    investigar la causa y seguir puliendo esta parte del motor.
 
@@ -82,7 +82,7 @@ Lo principal de lo que ya sabemos y todavía no se arregla.
    contornos repetidos de las letras en vez de un resplandor suave.
    El sistema de texto seguirá recibiendo mejoras.
 
-   En la Surface, durante una prueba de fuentes con un diseño de 1920×1080, percibí un corte
+   En una tableta Surface 3, durante una prueba de fuentes con un diseño de 1920×1080, percibí un corte
    leve en la parte superior de algunas letras pequeñas. Seguían siendo legibles. Todavía
    falta reproducirlo con una captura directa y medir qué lo provoca.
 
@@ -127,7 +127,8 @@ suyos para el menú, la pausa, la configuración y la carga, en `vnscript/`.
 - **14 de julio** — la primera sesión de trabajo en Claude Code.
 - **De julio a septiembre** — entran más voces, para implementar y para revisar.
 - **18 de septiembre** — el motor pasa a Technical Preview.
-- **25 de septiembre** — seis meses, y esta preview.
+- **25 de septiembre** — seis meses desde el documento fundacional.
+- **9 de octubre** — ajustes finales y preparación de la primera publicación.
 
 ## Cómo fue posible
 
@@ -189,7 +190,8 @@ main menu, pause, settings and load screens, in `vnscript/`.
 - **July 14** — the first working session in Claude Code.
 - **July to September** — more voices join, to implement and to review.
 - **September 18** — the engine becomes a Technical Preview.
-- **September 25** — six months, and this preview.
+- **September 25** — six months since the founding design document.
+- **October 9** — final adjustments and preparations for the first public release.
 
 ### How it was possible
 

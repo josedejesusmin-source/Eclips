@@ -1,0 +1,65 @@
+{
+  "name": "Eclips Tema",
+  "scopeName": "source.eclips.tema",
+  "patterns": [
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#color"
+    },
+    {
+      "include": "#hashkey"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#number"
+    },
+    {
+      "include": "#block"
+    },
+    {
+      "include": "#key"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "match": "#(?![0-9A-Fa-f]).*$",
+      "name": "comment.line.number-sign.eclips"
+    },
+    "color": {
+      "match": "#[0-9A-Fa-f]+(?![A-Za-z0-9_])",
+      "name": "variable.other.constant.color.eclips"
+    },
+    "string": {
+      "match": "\"(?:[^\"#]|#[0-9A-Fa-f])*\"",
+      "name": "string.quoted.double.eclips"
+    },
+    "number": {
+      "match": "(?<![A-Za-z0-9_])-?\\d+(?:\\.\\d+)?%?",
+      "name": "constant.numeric.eclips"
+    },
+    "hashkey": {
+      "match": "#(?![0-9A-Fa-f]+(?![A-Za-z0-9_]))[A-Za-z_][A-Za-z0-9_]*",
+      "name": "entity.other.attribute-name.clave.eclips"
+    },
+    "block": {
+      "match": "^[ \\t]*(caja_dialogo|dialog_box)\\b(?=.*\\{[ \\t]*$)",
+      "captures": {
+        "1": {
+          "name": "keyword.other.bloque.eclips"
+        }
+      }
+    },
+    "key": {
+      "match": "(^|[ \\t])([A-Za-z_][\\w]*)",
+      "captures": {
+        "2": {
+          "name": "entity.other.attribute-name.clave.eclips"
+        }
+      }
+    }
+  }
+}

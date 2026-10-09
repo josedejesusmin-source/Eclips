@@ -1,0 +1,11 @@
+{
+  "Escena": {
+    "prefix": "escena",
+    "description": "Escena mínima de EclipScript: nombre, narración y fin",
+    "body": [
+      "escena ${1:inicio}",
+      "  \"${2:Había una vez...}\"",
+      "  fin"
+    ]
+  }
+}
