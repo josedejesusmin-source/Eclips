@@ -1,0 +1,68 @@
+# testigo_lugar.eclmap -- el lugar de la ruta de Luna, primera visita.
+#
+# Cabe en la pantalla (22 x 12, zoom en el lua) para que el borde
+# se vea desde el spawn. Sol y Luna juntas, a la izquierda.
+# Estrella aparte, cerca de la boca. El jugador, al lado de ellas.
+# Nadie habla al entrar. La boca es el "<" de abajo, entre bloques.
+# Unos bloques (pared, columna azul, cajas) para que no sea un claro.
+# Las paredes son las mismas en testigo_lugar_despues.
+# El diálogo de después de la cueva vive en testigo_lugar_despues:
+# un npc no puede cambiar de texto dentro del mismo mapa.
+
+modo: topdown
+# Música del mapa de la ruta de Luna, hasta la cueva.
+musica: "assets/musica/mapa_luna.ogg"
+velocidad: 300
+tamano: 54
+lua: "testigo_lugar.lua"
+
+jugador:
+  sprite: "assets/cubo/"
+  puede_atacar: false
+
+# Una puerta: un tile de tipo puerta. "destino" es el mapa al que lleva (la ruta
+# va desde la carpeta del juego) y "posicion" es dónde apareces en ese mapa, en
+# tiles: columna y fila, contando desde 0 (aquí, justo arriba de la boca).
+# Las claves se escriben sin tilde: "posición" con tilde se ignora sin avisar.
+tile < "":
+  tipo: puerta
+  destino: "vnscript/testigo_lugar_cueva.eclmap"
+  posicion: 7, 7
+
+mapa:
+######################
+#......###...........#
+#......#.............#
+#..S.L....#..........#
+#.........#.......=..#
+#.........#.......=..#
+#....P..B...B........#
+#..B......#..........#
+#...............E....#
+#.............#.#....#
+#.............#<#....#
+######################
+
+npc S "Sol" #FFAA33:
+  "This is the place."
+  "There's room for everyone. It's easy to reach."
+  "And we can go back the way we came."
+  # (Pausa breve.)
+  "What do you think?"
+  "Luna seems to like it."
+
+npc L "Luna" #9966BB:
+  "..."
+  "Well, Sol did find a place."
+  "I thought it would be bigger."
+  "We still haven't seen all of it, though."
+  # (Luna observa el terreno.)
+  "Let's walk around."
+  "I want to know where we're going to end the story."
+
+npc E "Estrella" #33CCFF:
+  "..."
+  "You can see quite a bit from here."
+  "There's a way in over there, too."
+  # (Pausa.)
+  "I want to see which way you come out."

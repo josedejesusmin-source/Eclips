@@ -1,0 +1,104 @@
+# tema.eclips — el tema de la demo: colores, fuente y cajas, todo en un lugar.
+#
+# El motor lo lee una vez al arrancar (project.eclips lo fija con "tema_default").
+# Casi cualquier valor de acá se puede sobreescribir por personaje con
+# "caja_dialogo", más abajo.
+
+# Caja de diálogo: el fondo donde habla el reparto.
+caja_color      #1a1f2e
+caja_opacidad   92%
+caja_borde      #6BF0FF
+caja_radio      12
+
+# Placa del nombre: la etiqueta que dice quién habla.
+nombre_fondo    #101018
+nombre_borde    #6BF0FF
+nombre_texto    #FFFFFF
+nombre_radio    8
+
+# Texto del diálogo: blanco, con un contorno negro de 1 px.
+texto_color            #FFFFFF
+texto_outline_color    #000000
+texto_outline_grosor   1
+
+# Botones (ranuras de guardar/cargar y controles).
+boton_fondo     #101018
+boton_borde     #6BF0FF
+boton_texto     #FFFFFF
+
+# Una sola fuente en el tema: Nunito Regular (OFL 1.1). M PLUS y Hachi no vienen
+# de acá: el menú las declara con su propia línea "fuente".
+fuente "third_party/fonts/nunito/Nunito-Regular.ttf"
+# Velocidad del diálogo por defecto: 40 caracteres por segundo (el motor usa 30).
+velocidad_texto 40
+
+# Opciones de "elegir": en reposo, sólo texto gris, con fondo y
+# borde transparentes; al pasar el mouse se enciende una placa navy y el botón
+# crece 6% ("choice_hover_escala 1.0" sería apagado).
+# "choice_pos_y" es el centro del bloque de opciones: 0.5 = mitad de pantalla;
+# 0.60 lo baja un poco.
+choice_fondo_color        #00000000
+choice_borde_color        #00000000
+choice_texto_color        #9AA0B8
+choice_hover_fondo_color  #1A2452
+choice_hover_borde_color  #6E7FB2
+choice_hover_texto_color  #FFFFFF
+choice_hover_escala       1.06
+choice_pos_y              0.60
+# Placas contenidas: el ancho va como fracción de la pantalla y el alto en px.
+choice_ancho_ratio        0.30
+choice_altura             60
+choice_sonido_click       "assets/motor/dialogo.wav"
+
+# UNA CAJA POR PERSONAJE
+# Cada "caja_dialogo" cambia solo el borde de la caja, de la placa del nombre y
+# de los botones; el fondo, el texto y la fuente siguen iguales. Cada tono sale
+# del arte de su personaje: Sol del ámbar de sus ojos, Luna de un lavanda,
+# Estrella del lila de su cuerpo. El narrador conserva el cian.
+# Cada personaje se ata a la suya con "caja caja_X" en project.eclips.
+#
+# Las OPCIONES CON ARTE viven solo en estas cajas: un "elegir" se dibuja con la
+# caja de quien habló último. Así, las elecciones de la demo llevan el arte, y el
+# menú, la pausa y la configuración (donde no habla nadie) se quedan con las
+# opciones de solo texto declaradas arriba.
+# "idle.png" es la placa en reposo y "hover.png" la del mouse encima. El PNG
+# mide 350 × 35 (pensado para 720p); a 1080 es ×1.5 = 525 × 53, y su ancho va
+# como fracción de 1920: 525 / 1920 = 0.2734.
+# Con PNG, el motor toma la OPACIDAD de "choice_fondo_color" sobre el arte: si
+# fuera transparente, la placa en reposo no se vería; por eso acá es opaca.
+#
+# Van al FINAL a propósito: una "caja_dialogo" copia la caja por defecto tal
+# como está EN ESE PUNTO del tema, y así hereda todo lo de arriba.
+caja_dialogo caja_sol {
+caja_borde           #E0A458
+nombre_borde         #E0A458
+boton_borde          #E0A458
+choice_sprite        "assets/demo/idle.png"
+choice_hover_sprite  "assets/demo/hover.png"
+choice_ancho_ratio   0.2734
+choice_altura        53
+choice_fondo_color   #101018
+choice_pos_y         0.5
+}
+caja_dialogo caja_luna {
+caja_borde           #A7A4D8
+nombre_borde         #A7A4D8
+boton_borde          #A7A4D8
+choice_sprite        "assets/demo/idle.png"
+choice_hover_sprite  "assets/demo/hover.png"
+choice_ancho_ratio   0.2734
+choice_altura        53
+choice_fondo_color   #101018
+choice_pos_y         0.5
+}
+caja_dialogo caja_estrella {
+caja_borde           #D8B4D8
+nombre_borde         #D8B4D8
+boton_borde          #D8B4D8
+choice_sprite        "assets/demo/idle.png"
+choice_hover_sprite  "assets/demo/hover.png"
+choice_ancho_ratio   0.2734
+choice_altura        53
+choice_fondo_color   #101018
+choice_pos_y         0.5
+}

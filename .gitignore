@@ -1,0 +1,28 @@
+# Build / IDE
+/out/
+/build/
+/.vs/
+/CMakeUserPresets.json
+*.obj
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.lib
+*.exp
+*.idb
+*.ipch
+
+# Player / local
+/saves/*
+!/saves/.gitkeep
+
+# OS
+Thumbs.db
+.DS_Store
+# Player/meta local
+meta.eclips
+seen.eclips
+settings.eclips
+vn_saves/
+

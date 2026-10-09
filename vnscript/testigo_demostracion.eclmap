@@ -1,0 +1,96 @@
+# testigo_demostracion.eclmap -- tramo 4 de la demo: la demostración de Sol.
+#
+# Una torreta, un señuelo, exactamente dos disparos, y el jugador SIN control:
+# Sol le muestra al cubo cómo es su prueba. La secuencia vive en
+# testigo_demostracion.lua; aquí sólo el escenario.
+#
+# La puesta: la zona de pruebas abajo, a la izquierda; los cuatro miran desde un
+# balcón a la derecha, arriba de la línea de tiro -- "el jugador permanece
+# apartado de la línea de disparo". Sol, Estrella, el cubo, Luna.
+#
+# Sin control, con piezas vivas (el motor no tiene un modo cinemática):
+#   velocidad: 0 + salto: 0 + puede_atacar: false. Esc sigue abriendo la pausa,
+#   y "Salir del nivel" se salta la escena: el jugador siempre puede salir.
+# Cámara quieta gratis: el mapa mide la pantalla.
+#
+# El señuelo es un ENEMIGO con daño 0 que no pelea:
+#   - nunca "invulnerable": el proyectil lo atravesaría sin impacto;
+#   - el proyectil tiene "dano: 0", así que la vida no baja y no aparece la barra
+#     de HP; el destello y el empujón salen igual.
+# La torreta también es un enemigo (sin daño, quieto): es la única forma de darle
+# un color propio a un bloque. Los dos llevan el borde rojo y el nombre encima
+# que el motor le dibuja a todo enemigo.
+
+modo: sidescroll
+velocidad: 0
+tamano: 54
+salida: lua
+lua: "testigo_demostracion.lua"
+
+gravedad: 1600
+salto: 0
+doble_salto: false
+dash: false
+wall_slide: false
+wall_jump: false
+
+jugador:
+  sprite: "assets/cubo/"
+  puede_atacar: false
+
+# Ojo con "gravedad": en la raíz del mapa (arriba, 1600) es la fuerza que tira
+# hacia abajo; dentro de un proyectil es sí/no. Este pulso vuela recto.
+proyectil B "Pulso" #FFD58A:
+  velocidad: 600
+  dano: 0
+  tamano: 16
+  tiempo_vida: 3
+  atraviesa_paredes: false
+  gravedad: false
+
+enemigo T "Torreta" #D7A46B:
+  hp: 99
+  dano: 0
+  velocidad: 0
+  movimiento: quieto
+  knockback: 0
+
+enemigo D "Señuelo" #BDB5A6:
+  hp: 99
+  dano: 0
+  velocidad: 0
+  movimiento: quieto
+  knockback: 0
+
+mapa:
+################################
+#..............................#
+#..............................#
+#..............................#
+#..............................#
+#..............................#
+#..............................#
+#..............................#
+#..............................#
+#..............................#
+#..............................#
+#..............................#
+#.....................S.E..P.L.#
+#....................###########
+#....................###########
+#..T.........D.......###########
+################################
+################################
+
+# Las tres solo miran. El cubo está quieto y ninguna queda a su alcance (la zona
+# de charla es la caja + 40 px; la más cercana, a 32 px), así que nunca aparece
+# el [E]. El "..." es el mismo relleno que el motor le pone a un npc sin bloque;
+# sin bloque, las tres perderían su nombre y su color.
+npc S "Sol" #FFAA33:
+  "..."
+
+npc E "Estrella" #33CCFF:
+  "..."
+
+npc L "Luna" #9966BB:
+  "..."

@@ -1,0 +1,130 @@
+# testigo_paseo.eclmap -- tramo 2D de la demo: el paseo.
+#
+# El cubo camina y habla con las tres, en el orden que quiera; Sol le ofrece una
+# elección. Es la parte 2D que el VN llama desde testigo_v2_arranque.ecl.
+#
+# Qué enseña este mapa: un nivel en vista cenital (modo: topdown), tres npc con
+# diálogo, una elección que deja una variable para el VN (set:), un checkpoint
+# y una salida que decide Lua (salida: lua).
+#
+# "tamano: 54" es el lado del cubo del jugador, no el de los tiles: un tile
+# mide siempre 60 px (este cuarto de 23 tiles mide 1380 px de ancho).
+#
+# VISTA CENITAL, SIN GRAVEDAD. El cuarto es chico y las tres quedan cerca del
+# jugador, como en una novela visual (donde prácticamente las tenías enfrente):
+#
+#                Estrella
+#       Sol .....jugador..... Luna
+#           Spawn/checkpoint
+#
+#   - el cuarto mide 23 x 13 y no la pantalla entera, con el alrededor algo vivo
+#     (cuatro columnas "=", las esquinas cerradas y dos cajas "B");
+#   - las tres quedan a 3 pasos del cubo, más cerca que al principio;
+#   - la cámara va ACERCADA: testigo_paseo.lua aplica un zoom de 1920/1380
+#     (x1.39) para que el cuarto llene la pantalla justo. Sin zoom, el cuarto
+#     flotaría sobre el fondo verde que el motor pinta en toda la pantalla;
+#   - un cruce de camino (":") lleva a cada una. El centro, donde nace el cubo,
+#     queda SIN camino: "El centro no es un sitio. Es un hueco."
+#
+# Los tiles de estructura tienen color FIJO según su tipo (el .eclmap no lee un
+# color para tiles): "#" pared marron, "=" pared azul, "B" caja, ":" suelo gris
+# verdoso (caminable, sin efecto), "+" checkpoint verde que late. "#", "=", "B"
+# y las tres (los npc) son sólidos.
+#
+# En el 2D solo el cubo lleva imagen: en un npc, "sprite:" se lee y se ignora.
+#
+# EL "+" ES UN CHECKPOINT DE VERDAD: al pisarlo el motor muestra "Checkpoint!" y,
+# si el cubo cae y se reintenta, vuelve ahí en vez de al centro.
+#
+# Las "(pausa)" y las acotaciones del guion no son líneas: la caja del 2D no
+# tiene pausas ni acepta líneas vacías, así que quedan marcadas con un comentario
+# donde estaban; cada clic ya es un pulso.
+#
+# Lo que este mapa deja en el VN (lo escribe testigo_paseo.lua):
+#   paseo_orden_1..3   sol | luna | estrella, en el orden en que hablaste
+#   paseo_eleccion     sol  = "Quiero ver lo que querias hacer."
+#                      luna = "Quiero seguir con lo de Luna."
+#                      -    = no eligió (el ESC de la elección)
+#   cubo_x, cubo_y     donde quedó el cubo, para que las copias arranquen ahí
+#
+# Si cambias este suelo, cambia también el de testigo_copias.eclmap: es el mismo.
+
+modo: topdown
+# Música del paseo: suena con el slider de música y repite. El VN pausa la suya
+# al entrar aquí.
+musica: "assets/musica/caminar.ogg"
+velocidad: 300
+tamano: 54
+salida: lua
+lua: "testigo_paseo.lua"
+
+jugador:
+  sprite: "assets/cubo/"
+  puede_atacar: false
+
+tile + "":
+  tipo: checkpoint
+
+tile : "":
+  tipo: suelo
+
+mapa:
+#######################
+###.................###
+##.................B.##
+#....=.....E.....=....#
+#..........:..........#
+#..........:..........#
+#.......S::P::L.......#
+#..........:..........#
+#..........:..........#
+#....=.....+.....=....#
+##.B.................##
+###.................###
+#######################
+
+npc S "Sol" #FFAA33:
+  "It loaded."
+  "You moved. You didn't fall."
+  "Good."
+  "Now tell me one thing."
+  elegir:
+    "I want to see what you wanted to do." ->
+      set: paseo_eleccion = sol
+      "A test."
+      "With rules. With an ending you can measure."
+      "Luna started with an intro."
+      "You're in the middle."
+      "Good."
+      "I'll show you afterward."
+    "I want to keep going with Luna's story." ->
+      set: paseo_eleccion = luna
+      "Sure."
+      "The traveler."
+      "Then we keep going with hers."
+      "Walk anyway."
+      "When it breaks, tell me."
+
+npc L "Luna" #9966BB:
+  "You made it."
+  "So it was a step."
+  # (pausa)
+  "Better this way."
+  "Just the text."
+  "This still counts as a novel."
+  "Don't listen to Sol if he gives you a number."
+
+npc E "Estrella" #33CCFF:
+  "Hi."
+  "You walked."
+  "How are you?"
+  # (El cubo no dice nada.)
+  "Me too."
+  # (pausa)
+  "The ground is new."
+  "I'm not."
+  # (pausa)
+  "..."
+  "Are you there too?"
+  # (El cubo sigue mirándola.)
+  "All right."

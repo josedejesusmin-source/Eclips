@@ -1,0 +1,121 @@
+# project.eclips — el manifiesto del proyecto de la demo.
+#
+# El motor lo lee una sola vez al arrancar: de acá salen el guion inicial, el
+# tema, el menú y el reparto. Es solo claves y valores (y bloques con { }); los
+# dos puntos (:) son de los .ecl, no de este archivo.
+#
+# Si abriste la demo para aprender, este es un buen orden:
+#   1. este archivo: qué arranca y quién es quién;
+#   2. tema.eclips: cómo se ven la caja, los nombres y las opciones;
+#   3. vnscript/menu_principal.ecl: un menú completo, en pocas líneas;
+#   4. vnscript/testigo_v2_arranque.ecl: la novela, de lo básico a los trucos;
+#   5. vnscript/testigo_paseo.eclmap y su .lua: el primer mapa 2D.
+# Cada comando está explicado en los dos manuales que vienen con el motor:
+# ECLIPSCRIPT_DOCS.md (la novela) y VOCABULARIO_2D_ECLIPMAP.md (mapas y Lua).
+#
+autor "Jesus"
+
+# Dónde viven los guiones de la demo y con cuál arranca.
+script_dir "vnscript/"
+script_inicial "testigo_v2_arranque.ecl"
+tema_default "tema.eclips"
+# Lienzo lógico en el que está pensada la demo: 1920 × 1080. Es la referencia
+# a respetar si cambias arte o posiciones.
+resolucion_diseno 1920 1080
+# El menú del título de la demo. Si lo quitas, el motor usa el suyo (en C++).
+menu "menu_principal.ecl"
+
+# Pantallas autorables: sustituyen por estos .ecl las que trae el motor.
+# Cambiarlas no exige tocar C++.
+pantallas {
+    config "config.ecl"
+    cargar "load.ecl"
+    pausa  "pausa.ecl"
+}
+
+# La firma del motor (el eclipse) se muestra UNA VEZ, en el primer arranque;
+# después no vuelve. Otros valores: "siempre" (cada arranque) y "no" (nunca).
+intro_motor una_vez
+
+# Español es el original. El inglés vive en idiomas/: los textos, en en.lang;
+# los mapas 2D traducidos, en idiomas/en/vnscript/, con el mismo nombre que el
+# original. El jugador elige el idioma en Configuración.
+idiomas es en
+
+# LOS PERSONAJES DE LA DEMO
+#
+# El reparto se arma en dos partes: este archivo pone el NOMBRE (lo que dice la
+# placa), la CARA y la CAJA de cada personaje; el guion pone el SPRITE base, por
+# ejemplo personaje sol "assets/demo/sol/Sol.png" en testigo_v2_arranque.ecl.
+# Ojo: esa línea del guion no nombra la placa; sin los bloques de acá la caja
+# diría "sol", en minúscula.
+#
+# LAS CARAS: el guion pide un gesto —con "mostrar sol abierta" o en la propia
+# línea de diálogo, sol abierta: "..."— y esta tabla dice qué dibujo es:
+# "apariencia abierta 07" → assets/demo/sol/Sol_07.png.
+# Cambiar una cara es cambiar un número acá, sin tocar el guion.
+# "look_default neutral": un "mostrar sol" sin gesto usa la cara neutral y nunca
+# cae al sprite base, que aquí no existe a propósito (Sol.png no está: solo hay
+# caras). Para volver a la neutral más tarde, se la nombra al mostrar.
+#
+# "ancla_y" sube (negativo) o baja a cada personaje para que los tres pisen la
+# misma línea: cada dibujo deja distinto aire abajo.
+# "caja caja_X" lo ata a su caja de diálogo, definida en tema.eclips.
+#
+# Leyenda de caras (el número es el archivo, p. ej. "Sol_02.png"):
+# Sol: 01 ^^, 02 neutral, 03 mira arriba, 04 mira der, 05 mira izq,
+#      06 redondos, 07 grandes, 08 párpado recto, 09 > <,
+#      010 párpado caído, 011 asimétrica, 012 muy cerrada
+personaje sol {
+    nombre "Sol"
+    apariencia neutral  02
+    apariencia abierta  07
+    apariencia plana    08
+    apariencia juicio   010
+    apariencia apretada 09
+    apariencia dudosa   011
+    apariencia mira_izq 05
+    # Hacia Luna, que queda a su derecha.
+    apariencia mira_der 04
+    look_default neutral
+    ancla_y -18
+    caja caja_sol
+}
+
+# La misma Sol asomándose desde el borde: otro alias, porque es otra pose con
+# otras rutas, pero conserva su placa y su caja.
+personaje solasoma {
+    nombre "Sol"
+    caja caja_sol
+}
+
+# Luna: 01 neutral, 02 ^^, 03/06 miran a los lados, 07 arriba,
+#       08/020 grandes, 05/09 asimétricas, 012 enojo, 013/014 cerradas,
+#       015 brillo, 016/021 párpado recto, 017-019 variantes de mirada
+personaje luna {
+    nombre "Luna"
+    apariencia neutral 01
+    apariencia abierta 020
+    apariencia juicio  016
+    apariencia dudosa  09
+    apariencia enojo   012
+    # Hacia Sol, que queda a su izquierda.
+    apariencia mira_izq 04
+    look_default neutral
+    ancla_y -13
+    caja caja_luna
+}
+
+# Estrella: 01 neutral, 02 párpado recto, 03/05 ^^, 04 mira arriba,
+#           06 estrellitas, 07 chiquitos, 08 medialunas, 09/010 lados.
+# Las caras con bufanda usan 0001-00010, en otro orden; 0003 mira al frente.
+personaje estrella {
+    nombre "Estrella"
+    apariencia neutral  01
+    apariencia abierta  04
+    apariencia plana    02
+    apariencia destello 06
+    look_default neutral
+    ancla_y -12
+    caja caja_estrella
+}
