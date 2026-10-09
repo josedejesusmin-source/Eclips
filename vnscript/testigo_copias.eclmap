@@ -1,0 +1,105 @@
+# testigo_copias.eclmap -- tramo 3 de la demo: las copias.
+#
+# Seis cubos "mal hechos" en tandas; las charlas siguen abiertas. Es el combate
+# del 2D que el VN llama después del paseo.
+#
+# VISTA CENITAL, como el paseo: es el mismo suelo, el mismo cuarto de 23 x 13 y
+# la misma cámara acercada (ver testigo_copias.lua). Es cenital a propósito: el
+# movimiento "seguir" no tiene gravedad, así que en side-scroll las copias
+# perseguirían por el aire.
+#
+# DOS MAPAS Y NO UNO: el diálogo de un npc no puede cambiar dentro de un mapa (el
+# bloque "npc" no tiene "si:", y Lua no toca npcs), y en este tramo las tres
+# dicen otra cosa. El guion ya trae el corte ("Espera." / "Hay otro.").
+# "El mismo suelo" se conserva así:
+#   - la cuadrícula es la del paseo, letra por letra;
+#   - testigo_copias.lua pone al cubo donde el paseo lo dejó (cubo_x/cubo_y).
+# Si cambias el suelo del paseo, cámbialo acá también.
+#
+# Lo que el motor hace y conviene saber al mirarlo:
+#   - las copias miden 60 (un tile) y el cubo 54: salen más grandes que él.
+#     Un enemigo no lleva "tamano": mide siempre un tile. Sólo el jugador y
+#     los proyectiles lo tienen.
+#   - el borde rojo y el nombre encima los dibuja el motor en todo enemigo.
+#   - si el cubo cae, el panel de derrota ofrece reintentar: el nivel vuelve a
+#     empezar, y si el cubo pisó el + (checkpoint) aparece ahí.
+#
+# Lo que este mapa deja en el VN (lo escribe testigo_copias.lua):
+#   copias_eliminadas            0..6
+#   copias_golpes                golpes que recibió el cubo
+#   copias_hablo_sol/luna/estrella   1 si habló con ella durante las copias
+
+modo: topdown
+# Música de las copias: una sola pista, que se repite.
+musica: "assets/musica/combate.ogg"
+velocidad: 300
+tamano: 54
+salida: lua
+lua: "testigo_copias.lua"
+
+jugador:
+  sprite: "assets/cubo/"
+  hp: 5
+  puede_atacar: true
+  # El cubo pega cuerpo a cuerpo (melee) a 76 px, 1 de daño, cada 0.30 s.
+  # "invencible" son los segundos que no recibe daño después de un golpe.
+  ataque_tipo: melee
+  ataque_rango: 76
+  ataque_dano: 1
+  ataque_cooldown: 0.30
+  invencible: 1.25
+
+hud:
+  hp: visible
+
+tile + "":
+  tipo: checkpoint
+
+tile : "":
+  tipo: suelo
+
+# No está en la cuadrícula: la saca testigo_copias.lua, por tandas.
+enemigo C "Copia" #2A2A2A:
+  hp: 2
+  dano: 1
+  velocidad: 110
+  movimiento: seguir 2000
+  knockback: 200
+
+mapa:
+#######################
+###.................###
+##.................B.##
+#....=.....E.....=....#
+#..........:..........#
+#..........:..........#
+#.......S::P::L.......#
+#..........:..........#
+#..........:..........#
+#....=.....+.....=....#
+##.B.................##
+###.................###
+#######################
+
+npc S "Sol" #FFAA33:
+  "Esto no era el test."
+  "Todavía no."
+  "La base sigue ahí."
+
+npc L "Luna" #9966BB:
+  "Esto no estaba escrito."
+  # (pausa)
+  "No importa."
+  "Todavía puede ser una novela."
+  # (pausa)
+  "Pero no te quedes aquí."
+
+npc E "Estrella" #33CCFF:
+  "Hola."
+  # (pausa)
+  "Siguen viniendo."
+  "Tú viniste aquí."
+  # (pausa)
+  "Bueno."
+  # El guion trae despues un "...." suelto, sin nombre: puede ser una linea de
+  # Estrella o un separador. Queda sin poner (a decidir).

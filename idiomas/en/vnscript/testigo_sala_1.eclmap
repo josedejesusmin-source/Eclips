@@ -1,0 +1,80 @@
+# testigo_sala_1.eclmap -- la sala de Sol, tramo 1 de 3: LA GRAVEDAD.
+#
+# Prueba de juego: 96 x 18 (tres pantallas de ancho, una de alto).
+# Nada dispara. Sin dash. Sin plataformas: el salto se prueba en suelo sólido.
+# El piso sube y baja. Los huecos no se movieron.
+#
+# Las claves de física de abajo (gravedad, salto, coyote, doble_salto,
+# wall_slide, wall_jump y dash) están explicadas en el manual del 2D,
+# «Configuración de side-scroll».
+#
+#   cols 1-10    suelo. P en 2,15.
+#   cols 11-17   escalón de +1.
+#   cols 18-27   otra vez abajo.
+#   cols 28-32   escalón de +2. Dura poco.
+#   cols 33-38   otra vez abajo, 6 tiles: el salto no los cruza. Se camina.
+#   col 39       se vuelve a subir (+2) hacia el hueco de 3.
+#   cols 46-48   hueco de 3. Escalera a la izquierda del foso.
+#   cols 59-62   hueco de 4. El último que el salto debería cruzar.
+#   cols 63-64   aterrizaje corto.
+#   cols 65-70   otro +2, ancho a propósito: no se salta por encima.
+#   cols 71-72   se baja a la orilla del hueco de 6.
+#   cols 73-78   hueco de 6: el salto no llega. Abajo hay piso y escalera
+#                a la derecha; ese es el camino. A la izquierda se reintenta.
+#   col 90       puerta al tramo 2, en un paso de un tile (cols 89-92)
+#                para no saltarla. Apareces en la P del tramo 2 (3, 10).
+#
+# Caer no es golpe. El foso es la fila 17: desde ahí un labio de 3 tiles
+# no se salta. Si desde el primer escalón SÍ se sale al otro lado, el
+# hueco es mentira y se corre.
+
+modo: sidescroll
+# Música de la sala 1: el pulso de Sol y el cubo.
+musica: "assets/musica/prueba_sol_mapa1.ogg"
+velocidad: 330
+tamano: 54
+salida: lua
+
+# Física de la sala. Salto fijo de ~160 px (2.7 tiles): el motor no tiene salto
+# corto (soltar la tecla no lo corta) y hay control total en el aire.
+gravedad: 1600
+salto: 720
+coyote: 0.12
+doble_salto: false
+wall_slide: false
+wall_jump: false
+lua: "testigo_sala_1.lua"
+dash: false
+
+jugador:
+  sprite: "assets/cubo/"
+  hp: 3
+  puede_atacar: false
+
+hud:
+  texto: "SPACE: jump"
+
+tile < "":
+  tipo: puerta
+  destino: "vnscript/testigo_sala_2.eclmap"
+  posicion: 3, 10
+
+mapa:
+################################################################################################
+#........................................................................................#######
+#........................................................................................#######
+#........................................................................................#######
+#........................................................................................#######
+#........................................................................................#######
+#........................................................................................#######
+#........................................................................................#######
+#........................................................................................#######
+#........................................................................................#######
+#........................................................................................#######
+#........................................................................................#######
+#................................................................######..................#######
+#................................................................######...................<..###
+#...........................#####......#######...##########....##########......#################
+#.P........#######..........#####......########..###########...###########....##################
+################################################.############..############..###################
+################################################################################################

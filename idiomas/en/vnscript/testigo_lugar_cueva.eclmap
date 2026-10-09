@@ -1,0 +1,36 @@
+# testigo_lugar_cueva.eclmap -- la entrada chica.
+#
+# Una sola copia, quieta. Es un personaje, no un enemigo:
+# no persigue, no pega, no tiene borde rojo. Al hablar dice "...".
+# Salir por el mismo "<" deja en testigo_lugar_despues, en la boca.
+
+modo: topdown
+# Música de la cueva. Como en cualquier charla, hablarle a la sombra pausa la música.
+musica: "assets/musica/agujero_que_mira.ogg"
+velocidad: 300
+tamano: 54
+lua: "testigo_lugar_cueva.lua"
+
+jugador:
+  sprite: "assets/cubo/"
+  puede_atacar: false
+
+tile < "":
+  tipo: puerta
+  destino: "vnscript/testigo_lugar_despues.eclmap"
+  posicion: 15, 9
+
+mapa:
+################
+#..##......##..#
+#..............#
+#..#........#..#
+#......C.......#
+#..#........#..#
+#..............#
+#..............#
+#......<.......#
+################
+
+npc C "..." #2A2A2A:
+  "..."

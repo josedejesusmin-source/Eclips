@@ -1,0 +1,33 @@
+NOTICE — Eclips Engine
+======================
+
+Eclips Engine is licensed under the MIT License (see LICENSE).
+It is published as a source tree and as a ready-to-run zip; both carry
+third-party components and demo content, each under its own license.
+
+In both:
+1) Fonts — SIL Open Font License 1.1, not MIT:
+   Nunito, M PLUS Rounded 1c and Hachi Maru Pop — third_party/fonts/*/OFL.txt
+2) Demo art (assets/demo/ and assets/cubo/) — © 2026 Jesus — CC BY-NC-SA 4.0
+   https://creativecommons.org/licenses/by-nc-sa/4.0/
+   Mods and fan works are welcome, with credit and under the same license.
+   Selling it is not allowed.
+3) Demo sounds (assets/sonidos/), demo music (assets/musica/) and the engine
+   sound (assets/motor/) — MIT, like the engine.
+   The demo music uses instruments from the FluidR3_GM SoundFont (MIT):
+   Instruments: FluidR3_GM SoundFont — Copyright © 2000-2002, 2008 Frank Wen.
+   MIT License. Full license text: THIRD_PARTY_NOTICES.md, in the source tree.
+
+In the source tree:
+4) stb_image, stb_image_write, stb_truetype and stb_vorbis (third_party/)
+   — MIT or public domain, at your choice (see the end of each file).
+5) miniaudio (third_party/) — public domain or MIT No Attribution, at your
+   choice (see the end of the file).
+   SDL2, Lua, sol2 and glad are not included: vcpkg downloads them when you
+   build, and each keeps its own license.
+
+In the zip:
+6) SDL2 — zlib License — licenses/SDL2_LICENSE.txt
+7) Lua — MIT License — licenses/Lua_LICENSE.txt
+8) Microsoft Visual C++ runtime (vcruntime140*.dll, msvcp140*.dll, concrt140.dll)
+   — redistributed with the app under the Visual C++ Redistributable terms.

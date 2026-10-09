@@ -1,0 +1,96 @@
+# testigo_sala_2.eclmap -- la sala de Sol, tramo 2 de 3: EL RITMO.
+#
+# Prueba de juego, 96 x 18. Salto, sin dash. Torretas de línea
+# fija, un pulso cada 1.5 s, cada torreta un pulso sí y uno no (testigo_sala_2.lua).
+# Cuelgan de la fila 2, debajo de una franja de techo: en la fila 0 las tapa el HUD.
+#
+#   col 18         una gotera. Hay piso de sobra antes, para verla caer.
+#   cols 36-44     un lomo de +1, para separar las reglas.
+#   cols 52 y 60   dos goteras alternadas.
+#   col 68         termina la pasarela. Abajo, el pasillo (4 tiles de caída).
+#   col 80         una gotera sobre el pasillo, en contratiempo con el suelo.
+#   col 92 fila 14 torreta ras del suelo, hacia la izquierda. El tiro muere
+#                  en la pared de la pasarela (col 68).
+#   col 86         puerta al tramo 3, en un paso de un tile, ANTES de la torreta.
+#                  Apareces en la P del tramo 3 (4, 12).
+
+modo: sidescroll
+# Música de la sala 2: suma las torretas.
+musica: "assets/musica/prueba_sol_mapa2.ogg"
+velocidad: 330
+tamano: 54
+salida: lua
+
+# Física de la sala. Salto fijo de ~160 px (2.7 tiles): el motor no tiene salto
+# corto (soltar la tecla no lo corta) y hay control total en el aire.
+gravedad: 1600
+salto: 720
+coyote: 0.12
+doble_salto: false
+wall_slide: false
+wall_jump: false
+lua: "testigo_sala_2.lua"
+dash: false
+
+jugador:
+  sprite: "assets/cubo/"
+  hp: 3
+  puede_atacar: false
+
+hud:
+  texto: "SPACE: jump"
+
+# Los tiros: lo único que duele. "dano: 1", y Sol lo para (testigo_sala_comun.lua).
+proyectil B "Pulso" #FFD58A:
+  velocidad: 560
+  dano: 1
+  tamano: 16
+  tiempo_vida: 4
+  atraviesa_paredes: false
+  gravedad: false
+
+# El aviso: un cuadro quieto (velocidad 0) y AMIGO en la boca de la torreta,
+# que se apaga solo. Los proyectiles amigos no tocan al cubo.
+proyectil A "Aviso" #FFF4D6:
+  velocidad: 0
+  dano: 0
+  tamano: 24
+  tiempo_vida: 0.35
+  atraviesa_paredes: false
+  gravedad: false
+
+# Las torretas son enemigos quietos y sin daño: la única forma de darle un color
+# propio a un bloque. El motor les quita el colisionador a los enemigos, así que
+# la puerta o la salida van SIEMPRE antes de la torreta: el cubo nunca llega a
+# tocarla.
+enemigo T "Turret" #D7A46B:
+  hp: 99
+  dano: 0
+  velocidad: 0
+  movimiento: quieto
+  knockback: 0
+
+tile < "":
+  tipo: puerta
+  destino: "vnscript/testigo_sala_3.eclmap"
+  posicion: 4, 12
+
+mapa:
+################################################################################################
+################################################################################################
+#.................T.................................T.......T...................T....####....###
+#....................................................................................####....###
+#....................................................................................####....###
+#....................................................................................####....###
+#....................................................................................####....###
+#....................................................................................####....###
+#....................................................................................####....###
+#....................................................................................####....###
+#..P................................#########........................................####....###
+#####################################################################................####....###
+#####################################################################................####....###
+#####################################################################................####....###
+#####################################################################.................<.....T###
+################################################################################################
+################################################################################################
+################################################################################################

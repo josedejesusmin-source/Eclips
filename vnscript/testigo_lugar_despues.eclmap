@@ -1,0 +1,65 @@
+# testigo_lugar_despues.eclmap -- el mismo suelo, ellas en otro lado.
+#
+# Estrella en la boca (vio por dónde saliste). Sol arriba, hacia
+# el rincón ("por allí sigue"). Luna al otro lado, donde quiere
+# terminar. Al hablar con las tres se vuelve al VN.
+# La cuadrícula es la de testigo_lugar, letra por letra en las paredes.
+
+modo: topdown
+# Música al salir de la cueva: la misma canción, pero algo te siguió.
+musica: "assets/musica/mapa_luna_despues.ogg"
+velocidad: 300
+tamano: 54
+salida: lua
+lua: "testigo_lugar_despues.lua"
+
+jugador:
+  sprite: "assets/cubo/"
+  puede_atacar: false
+
+tile < "":
+  tipo: puerta
+  destino: "vnscript/testigo_lugar_cueva.eclmap"
+  posicion: 7, 7
+
+mapa:
+######################
+#......###........S..#
+#......#.............#
+#.........#..........#
+#.........#.......=..#
+#.........#.......=..#
+#.......B...B........#
+#..B......#..........#
+#.L...........E.P....#
+#.............#.#....#
+#.............#<#....#
+######################
+
+npc S "Sol" #FFAA33:
+  "Volviste."
+  "Estuvimos mirando un poco más."
+  "Por allí sigue el camino."
+  "No sé hasta dónde llega."
+  # (Pausa breve.)
+  "Lo marqué en el mapa."
+  "Por si queremos continuar."
+
+npc L "Luna" #9966BB:
+  "¡Ahí estás!"
+  "Creo que encontré dónde podemos terminar la expedición."
+  # (Luna observa el lugar.)
+  "Quiero que estemos los cuatro."
+  "Ven cuando termines de mirar."
+  "Todavía me falta una parte."
+
+npc E "Estrella" #33CCFF:
+  "Ah."
+  "Saliste por aquí."
+  "Quería saber si daba la vuelta."
+  # (Pausa.)
+  "¿Qué había dentro?"
+  # (El cubo negro no responde.)
+  "..."
+  "Bueno."
+  "Ahora sé por dónde sales."
