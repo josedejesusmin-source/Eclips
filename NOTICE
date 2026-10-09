@@ -19,6 +19,12 @@ In both:
    MIT License. Full license text: THIRD_PARTY_NOTICES.md, in the source tree.
 
 In the source tree:
+   Extension code (tools/vscode-eclips/) — MIT, except for its graphic:
+   Eclips logo/icon (tools/vscode-eclips/icono.png) — © 2026 Jesus
+   — CC BY-NC-SA 4.0, like the demo art.
+   https://creativecommons.org/licenses/by-nc-sa/4.0/
+   Credit the author, link the license and indicate changes. Commercial
+   use is not allowed; shared adaptations must use the same license.
 4) stb_image, stb_image_write, stb_truetype and stb_vorbis (third_party/)
    — MIT or public domain, at your choice (see the end of each file).
 5) miniaudio (third_party/) — public domain or MIT No Attribution, at your

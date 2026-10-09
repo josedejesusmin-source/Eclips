@@ -72,4 +72,6 @@ https://github.com/josedejesusmin-source/Eclips
 
 ## Licencia
 
-MIT, la misma del motor: puedes usarla, copiarla y cambiarla como quieras, siempre que conserves el aviso de la licencia.
+El código de la extensión usa MIT, igual que el motor: puedes usarlo, copiarlo y cambiarlo, siempre que conserves el aviso de la licencia.
+
+El logo y el icono son mi dibujo (© 2026 Jesus) y usan [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), igual que el arte de la demo. Puedes compartirlos y adaptarlos con crédito, indicando los cambios y sin fines comerciales. Si compartes una adaptación, debe conservar esa licencia.
