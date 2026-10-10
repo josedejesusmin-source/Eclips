@@ -28,6 +28,44 @@ con Lua cuando haga falta más. Lo que el motor todavía no trae sí podría ped
 - No es una versión 1.0.
 - Todavía no dibuja texto con SDF ni tiene cableadas todas las ranuras de fuente.
 
+## Requisitos y equipos probados
+
+**Los requisitos mínimos de CPU y RAM todavía no están medidos.** Por ahora, estos son los
+datos conocidos de la descarga compilada del motor con Testigo:
+
+- **Windows de 64 bits.** La preview se ha probado en Windows 10. La compatibilidad de esta
+  descarga con Windows 7, 8 u 8.1 todavía no se ha comprobado.
+- **Gráficos y controlador con soporte de OpenGL 3.1**, para la ruta de escritorio.
+- **Unos 132 MB libres** para los archivos descomprimidos del motor y la demo, más espacio para
+  partidas y proyectos propios.
+
+La he probado en mi PC, con estas características:
+
+| Componente | Equipo de referencia |
+|---|---|
+| Modelo | HP EliteOne 800 G1 AiO |
+| Procesador | Intel Core i5-4590S, 4 núcleos a 3,0 GHz |
+| Memoria RAM | 8 GB |
+| Gráficos | Intel HD Graphics 4600 |
+| Disco | HDD de 500 GB |
+| Sistema | Windows 10 Pro de 64 bits |
+
+También la probé en una **tableta Surface 3**. En un tramo de gameplay 2D observé una bajada a
+unos **35 FPS**. Todavía no he identificado la causa. El gameplay 2D es la parte menos
+desarrollada del motor y seguirá recibiendo mejoras, también de rendimiento.
+
+Estas pruebas describen cómo funcionó la demo en esos equipos. Todavía no permiten fijar los
+requisitos mínimos ni garantizar el mismo rendimiento en otros juegos hechos con el motor.
+Hay más observaciones en [Límites conocidos](#límites-conocidos).
+
+> **English:** Minimum CPU and RAM requirements have not yet been measured. The compiled
+> preview has been tested on 64-bit Windows 10. The desktop graphics path uses OpenGL 3.1.
+> Allow about 132 MB for the extracted engine and demo, plus space for saves and your own
+> projects. The PC above is a tested reference. On a Surface 3 tablet, one 2D gameplay section
+> dropped to about 35 FPS; the cause has not yet been identified. The 2D system will continue
+> receiving improvements, including performance work. Windows 7, 8 and 8.1 compatibility has
+> not been verified.
+
 ## Compilar (Windows)
 
 Hace falta CMake, el toolchain de C++ de MSVC y vcpkg con SDL2 / Lua / sol2 / glad (ver `vcpkg.json`).
