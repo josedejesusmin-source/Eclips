@@ -19,6 +19,7 @@ demo corta.
   `ECLIPSCRIPT_DOCS.md`. Está en español, con partes en inglés.
 - El manual de los mapas 2D (`.eclmap`) y de su Lua: `VOCABULARIO_2D_ECLIPMAP.md`. Está en español.
 - Fuentes OFL en `third_party/fonts/` (ver `THIRD_PARTY_NOTICES.md` — **OFL ≠ MIT**)
+- Extensión opcional para Visual Studio Code (https://marketplace.visualstudio.com/items?itemName=Sicigia.eclips-engine), con resaltado de sintaxis y fragmentos de código para los archivos de Eclips. También puedes escribirlos con cualquier editor de texto.
 
 La meta es que quien crea un juego pueda trabajar cómodo sin tocar C++: con guiones, mapas y temas, y
 con Lua cuando haga falta más. Lo que el motor todavía no trae sí podría pedir escribir C++.
